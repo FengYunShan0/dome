@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <!-- 在<head>部分引入Swiper的CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+  <!-- 在<body>结束标签前引入Swiper的JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <style>   .slider-container {
+    overflow-x: scroll; /* 允许水平滚动 */
+    white-space: nowrap; /* 图片不换行 */
+    width: 100%; /* 容器宽度，可以根据需要调整 */
+    scroll-behavior: smooth; /* 滚动平滑效果（CSS3特性，非所有浏览器支持） */
+  }
+
+  .slider-track {
+    display: flex; /* 使用Flex布局排列图片 */
+  }
+
+  .slider-track img {
+    /* 根据需要调整图片大小 */
+    width: 100%;
+    height: auto;
+    margin-right: 10px; /* 图片间的间隔 */
+  }
+
+  </style>
+  <script>
+    let startX, currentX, scrollLeft;
+
+    function touchStart(e) {
+      startX = e.touches[0].clientX;
+      scrollLeft = this.scrollLeft;
+    }
+
+    function touchMove(e) {
+      e.preventDefault(); // 阻止默认的屏幕滚动行为
+      currentX = e.touches[0].clientX;
+      let moveX = currentX - startX;
+      this.scrollLeft = scrollLeft - moveX;
+    }
+
+    function touchEnd() {
+      startX = null;
+      currentX = null;
+    }
+
+  </script>
+
+</head>
+<body>
+
+    <div class="slider-container" ontouchstart="touchStart(event)" ontouchmove="touchMove(event)" ontouchend="touchEnd(event)">
+      <!-- 图片列表 -->  <img src="../14b9f0e4044c8a1166e32cae3298b82.png" height="1074" width="747"/><img
+            src="../14b9f0e4044c8a1166e32cae3298b82.png" height="1074" width="747"/><img
+            src="../14b9f0e4044c8a1166e32cae3298b82.png" height="1074" width="747"/>
+    </div>
+
+
+
+</body>
+</html>
